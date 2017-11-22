@@ -1,0 +1,19 @@
+{
+  "name": "cyber_range_challenge",
+  "version": "1.0.0",
+  "description": "Internship application project for Virginia Cyber Range. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bepotts/cyber_range_challenge.git"
+  },
+  "author": "Brandon E Potts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bepotts/cyber_range_challenge/issues"
+  },
+  "homepage": "https://github.com/bepotts/cyber_range_challenge#readme"
+}
