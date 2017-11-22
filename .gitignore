@@ -26,5 +26,5 @@ coverage
 # Benchmarking
 benchmarks/graphs
 
-# Webstorm configuration
+# Webstorm config
 .idea/

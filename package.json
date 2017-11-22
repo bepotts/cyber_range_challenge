@@ -1,9 +1,11 @@
 {
   "name": "cyber_range_challenge",
   "version": "1.0.0",
-  "description": "Internship application project for Virginia Cyber Range. ",
-  "main": "index.js",
+  "description": "Internship application project for Virginia Cyber Range.",
+  "main": "js/index.js",
   "scripts": {
+    "lint": "eslint -c config/.eslintrc.json js/.",
+    "server": "nodemon --watch public --exec babel-node -- js/server.js",
     "test": "test"
   },
   "repository": {
@@ -15,5 +17,17 @@
   "bugs": {
     "url": "https://github.com/bepotts/cyber_range_challenge/issues"
   },
-  "homepage": "https://github.com/bepotts/cyber_range_challenge#readme"
+  "homepage": "https://github.com/bepotts/cyber_range_challenge#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "nodemon": "^1.12.1",
+    "webpack": "^3.8.1"
+  }
 }
