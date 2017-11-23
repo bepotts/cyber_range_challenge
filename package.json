@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/bepotts/cyber_range_challenge#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "passport-oauth2": "^1.4.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
