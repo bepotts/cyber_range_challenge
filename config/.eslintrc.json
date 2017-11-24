@@ -1,4 +1,8 @@
 {
-    "extends": "airbnb-base",
-    "plugins": ["flowtype"]
+  "extends": [
+    "airbnb-base"
+  ],
+  "presets": [
+    "flow"
+  ]
 }
