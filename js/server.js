@@ -11,15 +11,10 @@ import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config';
-import WeatherQuery from './weatherQuery';
+import constructUrl from './utils';
 
 const app = express();
 const compiler = webpack(webpackConfig);
-const query = new WeatherQuery();
-
-const url = 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.' +
-  'forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22nome%2C%20ak%22)' +
-  '&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys';
 
 app.use(webpackMiddleware(compiler, {
   hot: true,
@@ -33,9 +28,12 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-app.get('/location', (request, response) => {
+app.get('/location/:zipCode', (request, response) => {
 
   let rp = require('request-promise');
+  const zipCode = request.params.zipCode;
+  const url = constructUrl(zipCode);
+  console.log('This is the generated URL: ' + url);
 
   rp(url).then((body) => {
     const query = JSON.parse(body).query;

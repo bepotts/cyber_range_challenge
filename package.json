@@ -2,7 +2,7 @@
   "name": "cyber_range_challenge",
   "version": "1.0.0",
   "description": "Internship application project for Virginia Cyber Range.",
-  "main": "js/index.js",
+  "main": "js/server.js",
   "scripts": {
     "flow": "flow",
     "lint": "eslint -c config/.eslintrc.json js/.",

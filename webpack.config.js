@@ -5,7 +5,7 @@ export default {
   target: 'node',
   entry: [
     'webpack-hot-middleware/client',
-    path.join(__dirname, './js/index.js')
+    path.join(__dirname, './js/utils.js')
   ],
   output: {
     filename: 'bundle.js',
