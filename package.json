@@ -23,7 +23,6 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "express": "^4.16.2",
-    "passport-oauth2": "^1.4.0",
     "request": "^2.83.0",
     "request-promise": "^4.2.2"
   },
