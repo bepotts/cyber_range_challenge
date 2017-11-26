@@ -11,7 +11,9 @@ import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config';
-import constructUrl from './utils';
+import helpers from './helpers';
+
+const rp = require('request-promise');
 
 const app = express();
 const compiler = webpack(webpackConfig);
@@ -29,15 +31,16 @@ app.get('/', (req, res) => {
 });
 
 app.get('/location/:zipCode', (request, response) => {
-
-  let rp = require('request-promise');
   const zipCode = request.params.zipCode;
-  const url = constructUrl(zipCode);
-  console.log('This is the generated URL: ' + url);
+  const url = helpers.constructUrl(zipCode);
+  let scale = '';
+  if (typeof request.query.scale !== 'undefined') {
+    scale = request.query.scale;
+  }
 
   rp(url).then((body) => {
-    const query = JSON.parse(body).query;
-    response.send(JSON.stringify(query) + ' plus Hello world');
+    const temp = JSON.parse(body).query.results.channel.item.condition.temp;
+    response.send(helpers.buildJSON(temp, scale));
   });
 });
 

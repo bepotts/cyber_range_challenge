@@ -1,7 +1,7 @@
 [ignore]
 
 [include]
-
+js/helpers.js
 [libs]
 
 [lints]
