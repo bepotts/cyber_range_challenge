@@ -6,8 +6,10 @@
   "scripts": {
     "flow": "flow",
     "lint": "eslint -c config/.eslintrc.json js/.",
-    "start": "nodemon --watch public --exec babel-node -- js/server.js",
-    "test": "mocha"
+    "nyc": "nyc",
+    "start": "cross-env NODE_ENV=production babel-node -- js/server.js",
+    "test-server": "cross-env NODE_ENV=test nodemon --watch public --exec babel-node -- js/server.js",
+    "test": "nyc --timeout=3000 --reporter=html --reporter=text mocha --require babel-core/register test/*.js",
   },
   "repository": {
     "type": "git",
@@ -29,8 +31,10 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^7.2.3",
+    "babel-plugin-istanbul": "^4.1.5",
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
+    "cross-env": "^5.1.1",
     "eslint": "^4.12.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-flowtype": "^2.39.1",
@@ -38,6 +42,8 @@
     "flow-bin": "^0.59.0",
     "mocha": "^4.0.1",
     "nodemon": "^1.12.1",
+    "nyc": "^11.3.0",
+    "supertest": "^3.0.0",
     "webpack": "^3.8.1",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-hot-middleware": "^2.20.0"
