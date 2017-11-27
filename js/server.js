@@ -1,6 +1,5 @@
 /**
- * Server information about the application
- *
+ * Server configuration for the application
  */
 
 
@@ -25,12 +24,15 @@ app.use(webpackMiddleware(compiler, {
 }));
 app.use(webpackHotMiddleware(compiler));
 
+app.use(express.static('public'));
 
+// Create index route
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-app.get('/location/:zipCode', (request, response) => {
+// Create route that will serve weather JSONs
+app.get('/locations/:zipCode', (request, response) => {
   const zipCode = request.params.zipCode;
   const url = helpers.constructUrl(zipCode);
   let scale = '';
@@ -44,6 +46,18 @@ app.get('/location/:zipCode', (request, response) => {
   });
 });
 
+// Set port to listen to
 app.listen(8080, () => {
   console.log('App is listening on port 8080!');
+});
+
+// Send 404 error
+app.use(function (req, res, next) {
+  res.status(404).sendFile(path.join(__dirname, '../public/404.html'));
+});
+
+// error handling
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('There was an internal error.');
 });
