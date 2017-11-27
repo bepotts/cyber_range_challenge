@@ -17,12 +17,17 @@ const rp = require('request-promise');
 const app = express();
 const compiler = webpack(webpackConfig);
 
-app.use(webpackMiddleware(compiler, {
-  hot: true,
-  publicPath: webpackConfig.output.publicPath,
-  noInfo: true,
-}));
-app.use(webpackHotMiddleware(compiler));
+const environment = process.env.NODE_ENV;
+
+// tests which environment is running
+if(environment === 'test'){
+  app.use(webpackMiddleware(compiler, {
+    hot: true,
+    publicPath: webpackConfig.output.publicPath,
+    noInfo: true,
+  }));
+  app.use(webpackHotMiddleware(compiler));
+}
 
 app.use(express.static('public'));
 
@@ -47,7 +52,7 @@ app.get('/locations/:zipCode', (request, response) => {
 });
 
 // Set port to listen to
-app.listen(8080, () => {
+const server = app.listen(8080, () => {
   console.log('App is listening on port 8080!');
 });
 
@@ -61,3 +66,5 @@ app.use(function (err, req, res, next) {
   console.error(err.stack);
   res.status(500).send('There was an internal error.');
 });
+
+module.exports = server;
