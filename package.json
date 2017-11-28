@@ -9,7 +9,7 @@
     "nyc": "nyc",
     "start": "cross-env NODE_ENV=production babel-node -- js/server.js",
     "test-server": "cross-env NODE_ENV=test nodemon --watch public --exec babel-node -- js/server.js",
-    "test": "nyc --timeout=3000 --reporter=html --reporter=text mocha --require babel-core/register test/*.js",
+    "test": "nyc --timeout=3000 --reporter=html --reporter=text mocha --require babel-core/register test/*.js"
   },
   "repository": {
     "type": "git",
