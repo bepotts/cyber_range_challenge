@@ -1,9 +1,9 @@
 Cyber Range Challenge 
 ========================
 
-##Design Discussion
+## Design Discussion
 
-#####Production Design 
+##### Production Design 
 
 For normal usage, the core functionality of the application is provided by Express.js. I chose Express because the project
 didn't require anything more than a webserver with basic routing, and express does this and it's easy to test. 
@@ -30,19 +30,19 @@ containing the temperature and scale, and serve that JSON.
 
 Each request follows this cycle. 
 
-#####Testing Design 
+##### Testing Design 
 
 The testing is pretty standard: some HTTP request testing, unit testing, and JSON validation. I also generated 
 line coverage. 
 
-#####Tools used
+##### Tools used
 
 * Babel
 * Flow (static type checker. I love type checkers even though I realize not everyone does)
 * Webpack
 * ESLint
 
-#####Test Libraries
+##### Test Libraries
 
 * Mocha
 * Supertest
