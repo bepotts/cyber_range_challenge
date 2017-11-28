@@ -37,7 +37,7 @@ function buildJSON(temp: string, scale: string) {
   const jsonObject = {};
   let jsonScale = 'Fahrenheit';
   let jsonTemp = temp;
-  if (scale === 'Celsius') {
+  if (scale.toLowerCase() === 'celsius') {
     // Converts string to Number, performs the calculation, rounds, then converts back to a string
     jsonTemp = Math.round(convertFahrenheitToCelsius(Number(temp))).toString();
     jsonScale = scale;
