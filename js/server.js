@@ -20,7 +20,7 @@ const compiler = webpack(webpackConfig);
 const environment = process.env.NODE_ENV;
 
 // tests which environment is running
-if(environment === 'test'){
+if ( environment === 'test'){
   app.use(webpackMiddleware(compiler, {
     hot: true,
     publicPath: webpackConfig.output.publicPath,
